@@ -1,6 +1,7 @@
 # Salt of the World
 
 **Daily Bread** — a gamified, editorial-styled Bible-learning web app.
+https://dailybreadministries.netlify.app/
 *Feed your faith. Grow every day.*
 
 ## Stack
