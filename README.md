@@ -47,3 +47,27 @@ npm run preview
 - Demo persists everything in `localStorage` (no backend). Add Supabase for production.
 - Admin access: sign up with an email containing `admin`.
 - Scripture text shown in the demo is the World English Bible (public domain).
+
+## Deploy on Netlify
+
+`netlify.toml` is included — build command `npm run build`, publish directory `dist`, Node 22, and a
+single-page-app redirect so direct links like `/dashboard` work.
+
+**From GitHub (recommended)**
+
+1. Netlify → *Add new site* → *Import an existing project* → GitHub → `Allison369/salt-of-the-world`
+2. Keep the detected settings (`npm run build` / `dist`) and deploy.
+
+**Manual drop**
+
+```bash
+npm run build
+```
+
+Then drag the `dist` folder onto <https://app.netlify.com/drop>. `dist/_redirects` keeps routing working.
+
+**If a deploy fails**
+
+- Open *Deploys → the failed deploy → Deploy log* and read the first error.
+- "Command failed with exit code 1" during the build is usually Node — `NODE_VERSION = "22"` is already set in `netlify.toml`.
+- "Page not found" when refreshing a route means the SPA redirect is missing; the new `netlify.toml` / `_redirects` fix it after a redeploy.
