@@ -231,3 +231,76 @@ export default function FlameMascot({ mood = 'idle', message, size = 80, showBub
     </div>
   )
 }
+
+/**
+ * Compact brand mark — the same Spark character used by the mascot,
+ * trimmed to the face so it stays legible at logo size.
+ */
+export function SparkMark({ size = 26, animated = false }: { size?: number; animated?: boolean }) {
+  return (
+    <svg
+      viewBox="6 2 108 132"
+      width={size}
+      height={size}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className={animated ? 'animate-flame-sway' : undefined}
+    >
+      <defs>
+        <linearGradient id="smBody" x1="0.2" y1="0" x2="0.75" y2="1">
+          <stop offset="0%" stopColor="#FFE873" />
+          <stop offset="38%" stopColor="#FFC42E" />
+          <stop offset="78%" stopColor="#FB8C1A" />
+          <stop offset="100%" stopColor="#F2650B" />
+        </linearGradient>
+        <linearGradient id="smLimb" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FDA43A" />
+          <stop offset="100%" stopColor="#F26A0C" />
+        </linearGradient>
+        <radialGradient id="smGloss" cx="0.32" cy="0.22" r="0.55">
+          <stop offset="0%" stopColor="#FFFBE8" stopOpacity="0.92" />
+          <stop offset="60%" stopColor="#FFF3B0" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#FFF3B0" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="smIris" x1="0.3" y1="0.2" x2="0.7" y2="0.9">
+          <stop offset="0%" stopColor="#6B2F1A" />
+          <stop offset="100%" stopColor="#3A150A" />
+        </linearGradient>
+      </defs>
+
+      {/* legs + arms */}
+      <g fill="url(#smLimb)">
+        <rect x="44" y="116" width="13" height="17" rx="6" />
+        <rect x="63" y="116" width="13" height="17" rx="6" />
+      </g>
+      <path d="M93 84 C102 81 107 74 106 66" stroke="url(#smLimb)" strokeWidth="11" strokeLinecap="round" fill="none" />
+      <path d="M27 86 C18 85 13 91 15 98" stroke="url(#smLimb)" strokeWidth="11" strokeLinecap="round" fill="none" />
+
+      {/* body */}
+      <path
+        d="M60 6 C74 26 94 40 99 66 C104 94 86 118 60 118 C34 118 16 94 21 66 C26 40 46 26 60 6 Z"
+        fill="url(#smBody)"
+      />
+      <ellipse cx="47" cy="42" rx="20" ry="26" fill="url(#smGloss)" />
+      <path d="M60 10 C70 26 84 38 90 58" stroke="#FFF6C9" strokeWidth="3" strokeLinecap="round" opacity="0.5" fill="none" />
+
+      {/* eyes */}
+      <ellipse cx="44" cy="73" rx="14.5" ry="16" fill="#FFFDF7" />
+      <ellipse cx="76" cy="73" rx="14.5" ry="16" fill="#FFFDF7" />
+      <circle cx="45" cy="75" r="9.4" fill="url(#smIris)" />
+      <circle cx="77" cy="75" r="9.4" fill="url(#smIris)" />
+      <g fill="#FFFFFF">
+        <circle cx="41.6" cy="70" r="3.2" />
+        <circle cx="73.6" cy="70" r="3.2" />
+        <circle cx="48" cy="80" r="1.5" opacity="0.8" />
+        <circle cx="80" cy="80" r="1.5" opacity="0.8" />
+      </g>
+
+      {/* cheeks + smile */}
+      <ellipse cx="30" cy="88" rx="6.5" ry="4.4" fill="#FB7185" opacity="0.5" />
+      <ellipse cx="90" cy="88" rx="6.5" ry="4.4" fill="#FB7185" opacity="0.5" />
+      <path d="M53 95 q7 6 14 0" stroke="#7A2A12" strokeWidth="3.2" strokeLinecap="round" fill="none" />
+      <ellipse cx="60" cy="99" rx="4" ry="2" fill="#F87171" opacity="0.9" />
+    </svg>
+  )
+}

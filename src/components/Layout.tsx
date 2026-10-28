@@ -1,18 +1,8 @@
 ﻿import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import { useTheme } from '../lib/theme'
+import { SparkMark } from './FlameMascot'
 import { Home, BookOpen, Target, User, LogOut, Trophy, Sparkles, Zap, Flame, Sun, Moon } from 'lucide-react'
-
-function FlameMark() {
-  return (
-    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-      <path d="M12 1.6c2.9 3.6 4 5.9 2.9 8.4-.6 1.4-1.8 2.3-2.9 3.4-1.1-1.1-2.3-2-2.9-3.4C8 7.5 9.1 5.2 12 1.6Z" fill="#2a2140" />
-      <circle cx="9.9" cy="14.2" r="1.5" fill="#2a2140" />
-      <circle cx="14.1" cy="14.2" r="1.5" fill="#2a2140" />
-      <path d="M10.4 17.2q1.6 1.5 3.2 0" stroke="#2a2140" strokeWidth="1.4" strokeLinecap="round" fill="none" />
-    </svg>
-  )
-}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { user, logout, stats } = useApp()
@@ -27,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="app-header">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
           <Link to={user ? '/dashboard' : '/'} className="flex items-center gap-2.5 shrink-0">
-            <span className="brand-mark"><FlameMark /></span>
+            <span className="brand-mark"><SparkMark size={27} animated /></span>
             <span className="display text-[19px] font-bold tracking-tight text-strong">daily bread</span>
           </Link>
 
@@ -67,7 +57,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <footer className="mt-16 border-t" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid gap-6 sm:grid-cols-[1.4fr_1fr]">
           <div>
-            <div className="display text-xl font-bold text-strong">daily bread</div>
+            <div className="flex items-center gap-2">
+              <span className="brand-mark" style={{ width: '1.7rem', height: '1.7rem', borderRadius: '0.55rem' }}><SparkMark size={20} /></span>
+              <div className="display text-xl font-bold text-strong">daily bread</div>
+            </div>
             <p className="text-sm text-muted mt-2 max-w-sm">Short, interactive Bible lessons that help you build a daily habit and grow in faith — one day at a time.</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm sm:justify-end">
